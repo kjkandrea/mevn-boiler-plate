@@ -5,7 +5,7 @@
       align="center"
     >
       <v-col class="shrink">
-        login
+        <login-form />
       </v-col>
     </v-row>
   </v-container>
@@ -13,9 +13,11 @@
 
 <script>
 
+import LoginForm from "~/components/LoginForm"
+
 export default {
   components: {
-
+    LoginForm
   }
 }
 </script>
