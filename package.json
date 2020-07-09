@@ -1,17 +1,17 @@
 {
-  "name": "mern-boiler-plate",
+  "name": "mevn-boiler-plate",
   "version": "1.0.0",
   "description": "my MongoDB, Express, Vuejs, Nodejs boiler plate",
   "main": "index.js",
   "scripts": {
     "start": "node ./server/index.js",
-    "backend": "nodemon /server/index.js",
+    "backend": "nodemon ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+    "dev": "concurrently \"npm run backend\" \"npm run dev --prefix client\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kjkandrea/mern-boiler-plate.git"
+    "url": "git+https://github.com/kjkandrea/mevn-boiler-plate.git"
   },
   "keywords": [
     "express"
@@ -19,9 +19,9 @@
   "author": "andrea",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kjkandrea/mern-boiler-plate/issues"
+    "url": "https://github.com/kjkandrea/mevn-boiler-plate/issues"
   },
-  "homepage": "https://github.com/kjkandrea/mern-boiler-plate#readme",
+  "homepage": "https://github.com/kjkandrea/mevn-boiler-plate#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
