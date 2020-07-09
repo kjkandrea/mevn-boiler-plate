@@ -10,7 +10,7 @@
         <span class="title" style="color:#fff">MEVN bolier plate</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <!-- menu -->
+      <nav-bar />
     </v-app-bar>
 
     <v-main>
@@ -20,15 +20,21 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      source: String,
-    },
-    data: () => ({
-      
-    }),
-    created () {
-      this.$vuetify.theme.light = true
-    },
-  }
+
+import NavBar from '~/components/NavBar';
+
+export default {
+  components: {
+
+  },
+  props: {
+    source: String,
+  },
+  data: () => ({
+    
+  }),
+  created () {
+    this.$vuetify.theme.light = true
+  },
+}
 </script>

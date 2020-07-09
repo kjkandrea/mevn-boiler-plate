@@ -8,7 +8,6 @@
         <v-tooltip right>
           <template v-slot:activator="{ on }">
             <v-btn
-              :href="source"
               icon
               large
               target="_blank"
