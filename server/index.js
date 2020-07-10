@@ -19,8 +19,6 @@ app.use(cors({
   credentials: true
 }))
 
-console.log(config.mongoURI)
-
 const mongoose = require('mongoose')
 mongoose.connect(config.mongoURI, {
   useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
@@ -60,8 +58,6 @@ app.post('/api/users/register', (req, res) => {
 })
 
 app.post('/api/users/login', (req, res) => {
-  console.log(req.body)
-
   // 요청된 이메일을 데이터베이스에서 찾는다.
 
   User.findOne({ email: req.body.email }, (err, user) => {
@@ -95,6 +91,7 @@ app.post('/api/users/login', (req, res) => {
           userId: user._id,
           token: user.token,
           name: user.name,
+          avatar: user.avatar
         })
       })
     })
@@ -109,7 +106,7 @@ app.get('/api/users/auth', auth, (req, res) => {
     isAuth: true,
     email: req.user.email,
     name: req.user.name,
-    lastname: req.user.lastname,
+    avatar: req.user.avatar,
     role: req.user.role,
     image: req.user.image
   })
