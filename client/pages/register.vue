@@ -5,7 +5,7 @@
       align="center"
     >
       <v-col class="shrink">
-        register
+        <register-form />
       </v-col>
     </v-row>
   </v-container>
@@ -13,9 +13,11 @@
 
 <script>
 
+import RegisterForm from "~/components/RegisterForm"
+
 export default {
   components: {
-
+    RegisterForm
   }
 }
 </script>
