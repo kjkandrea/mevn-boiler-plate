@@ -39,7 +39,20 @@ app.post('/api/users/register', (req, res) => {
   const user = new User(req.body)
 
   user.save((err, user) => {
-    if(err) return res.json({ success: false, err})
+    if(err){
+      if(err.keyPattern.email === 1) {
+        return res.json({ 
+          success: false,
+          message: '해당 이메일로 생성된 계정이 이미 존재합니다.'
+        })
+      }
+
+      return res.json({ 
+        success: false,
+        message: `error ${err.code}`
+      })
+    }
+
     return res.status(200).json({
       success: true
     })
