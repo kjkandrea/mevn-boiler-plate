@@ -1,20 +1,23 @@
 <template>
   <nav class="navbar">
-    <nuxt-link v-if="loggedIn" to="/profile">
+    <nuxt-link v-if="profile.login" to="/profile">
       <v-btn
         text
         class="white--text">
-        프로필
+         <v-avatar size="32" color="indigo">
+          <v-img v-if="profile.avatar" src="profile.avatar" />
+          <span v-else class="white--text">{{profile.name[0]}}</span>
+        </v-avatar>
       </v-btn>
     </nuxt-link>
-    <nuxt-link v-if="!loggedIn" to="/login">
+    <nuxt-link v-if="!profile.login" to="/login">
       <v-btn
         text
         class="white--text">
         로그인
       </v-btn>
     </nuxt-link>
-    <nuxt-link v-if="!loggedIn" to="/register">
+    <nuxt-link v-if="!profile.login" to="/register">
       <v-btn
         text
         class="white--text"
@@ -22,14 +25,6 @@
         회원가입
       </v-btn>
     </nuxt-link>
-    <v-btn
-      v-if="loggedIn"
-      text
-      class="white--text"
-      @click="onClickLogout"
-    >
-      로그아웃
-    </v-btn>
   </nav>
 </template>
 
@@ -39,8 +34,8 @@ export default {
   data: () => ({
   }),
   computed: {
-    loggedIn() {
-      return this.$store.state.users.auth.login
+    profile() {
+      return this.$store.state.users.auth
     }
   },
   methods: {

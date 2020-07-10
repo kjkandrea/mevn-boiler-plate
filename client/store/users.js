@@ -4,7 +4,8 @@ export const state = () => ({
   auth: {
     login: null,
     name: "",
-    userId: ""
+    userId: "",
+    avatar: ""
   },
   loginProcess: {
     success: null,
@@ -21,6 +22,7 @@ export const mutations = {
     state.auth.login = payload.login;
     state.auth.name = payload.name;
     state.authuserId = payload.id
+    state.avatar = payload.avatar
   },
 
   setLoginProcessStatus(state, payload) {
@@ -31,6 +33,13 @@ export const mutations = {
   setRegisterProcessStatus(state, payload) {
     state.registerProcess.success = payload.success
     state.registerProcess.message = payload.message
+  },
+
+  processReset(state) {
+    state.loginProcess.success = null
+    state.loginProcess.message = null
+    state.registerProcess.success = null
+    state.registerProcess.message = null
   }
 };
 
@@ -46,8 +55,10 @@ export const actions = {
         commit('setAuth', {
           login: true,
           name: res.data.name,
-          id: res.data._id
+          id: res.data._id,
+          avatar: res.avatar
         });
+        commit('processReset')
         this.$router.push('/')
         Cookie.set('x_auth', res.data.token)
       }else {
@@ -72,6 +83,7 @@ export const actions = {
       if(res.data.success) {
         alert('회원가입이 완료되었습니다.')
         this.$router.push('/login')
+        commit('processReset')
       }else {
         commit('setRegisterProcessStatus', {
           success: res.data.success,
@@ -93,11 +105,11 @@ export const actions = {
         commit('setAuth', {
           login: false,
           name: "",
-          id: ""
+          id: "",
+          avatar: ""
         });
         this.$router.push('/login')
       }else {
-        console.log(res.data)
         alert("logout fail")
       }
     } catch (err) {
@@ -114,7 +126,8 @@ export const actions = {
         commit('setAuth', {
           login: true,
           name: res.data.name,
-          id: res.data._id
+          id: res.data._id,
+          avatar: res.data.avatar
         });
       }else {
         Cookie.remove('x_auth')

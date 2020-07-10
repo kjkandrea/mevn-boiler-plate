@@ -5,8 +5,9 @@
   >
     <v-container>
       <v-card-text style="padding-top:0;padding-bottom:0">
-        <v-avatar size="96">
-          <v-img src="https://wireframe.kr/wp-content/uploads/2020/07/john.jpg" />
+        <v-avatar size="96" color="indigo">
+          <v-img v-if="profile.avatar" src="profile.avatar" />
+          <span v-else class="white--text headline">{{profile.name[0]}}</span>
         </v-avatar>
       </v-card-text>
       <v-card-title style="justify-content:center">{{profile.name}}</v-card-title>
