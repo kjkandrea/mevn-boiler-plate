@@ -1,5 +1,12 @@
 <template>
   <nav class="navbar">
+    <nuxt-link to="/profile">
+      <v-btn
+        text
+        class="white--text">
+        프로필
+      </v-btn>
+    </nuxt-link>
     <nuxt-link to="/login">
       <v-btn
         text
