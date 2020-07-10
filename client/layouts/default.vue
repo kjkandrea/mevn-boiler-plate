@@ -8,8 +8,8 @@
       dense
     >
       <v-toolbar-title class="mr-12 align-center">
-        <nuxt-link to="/">
-          <span class="title" style="color:#fff">MEVN bolier plate</span>
+        <nuxt-link to="/" style="text-decoration:none">
+          <span class="title" style="color:#fff">MEVN</span>
         </nuxt-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -48,3 +48,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+  .v-main {
+    background-color: #f4f5f4;
+  }
+</style>
