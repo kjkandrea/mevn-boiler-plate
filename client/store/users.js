@@ -95,6 +95,7 @@ export const actions = {
           name: "",
           id: ""
         });
+        this.$router.push('/login')
       }else {
         console.log(res.data)
         alert("logout fail")

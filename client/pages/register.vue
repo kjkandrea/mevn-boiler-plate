@@ -18,6 +18,7 @@ import RegisterForm from "~/components/RegisterForm"
 export default {
   components: {
     RegisterForm
-  }
+  },
+  middleware: 'anonymous'
 }
 </script>

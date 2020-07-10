@@ -18,6 +18,6 @@ export default {
   components: {
     LoginForm
   },
-  middleware: 'anonymous',
+  middleware: 'anonymous'
 }
 </script>
