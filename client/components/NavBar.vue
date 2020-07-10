@@ -1,20 +1,20 @@
 <template>
   <nav class="navbar">
-    <nuxt-link to="/profile">
+    <nuxt-link v-if="loggedIn" to="/profile">
       <v-btn
         text
         class="white--text">
         프로필
       </v-btn>
     </nuxt-link>
-    <nuxt-link to="/login">
+    <nuxt-link v-if="!loggedIn" to="/login">
       <v-btn
         text
         class="white--text">
         로그인
       </v-btn>
     </nuxt-link>
-    <nuxt-link to="/register">
+    <nuxt-link v-if="!loggedIn" to="/register">
       <v-btn
         text
         class="white--text"
@@ -23,6 +23,7 @@
       </v-btn>
     </nuxt-link>
     <v-btn
+      v-if="loggedIn"
       text
       class="white--text"
       @click="onClickLogout"
@@ -37,6 +38,11 @@ export default {
   name: "Navbar",
   data: () => ({
   }),
+  computed: {
+    loggedIn() {
+      return this.$store.state.users.auth.login
+    }
+  },
   methods: {
     onClickLogout(){
       this.$store.dispatch('users/logout');
