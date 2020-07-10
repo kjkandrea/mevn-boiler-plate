@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    {{auth}}
     <v-app-bar
       app
       clipped-left
@@ -7,7 +8,9 @@
       dense
     >
       <v-toolbar-title class="mr-12 align-center">
-        <span class="title" style="color:#fff">MEVN bolier plate</span>
+        <nuxt-link to="/">
+          <span class="title" style="color:#fff">MEVN bolier plate</span>
+        </nuxt-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <nav-bar />
@@ -25,7 +28,7 @@ import NavBar from '~/components/NavBar';
 
 export default {
   components: {
-
+    NavBar
   },
   props: {
     source: String,
@@ -33,8 +36,15 @@ export default {
   data: () => ({
     
   }),
+  computed: {
+    auth() {
+      return this.$store.state.users.auth
+    }
+  },
   created () {
     this.$vuetify.theme.light = true
+
+    this.$store.dispatch('users/auth')
   },
 }
 </script>

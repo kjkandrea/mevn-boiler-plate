@@ -2,8 +2,9 @@ const Cookie = process.client ? require('js-cookie') : undefined
 
 export const state = () => ({
   auth: {
-    success: null,
-    name: ""
+    login: null,
+    name: "",
+    userId: ""
   },
   loginProcess: {
     success: null,
@@ -13,7 +14,9 @@ export const state = () => ({
 
 export const mutations = {
   setAuth(state, payload) {
-    state.auth = payload;
+    state.auth.login = payload.login;
+    state.auth.name = payload.name;
+    state.authuserId = payload.id
   },
 
   setLoginProcessStatus(state, payload) {
@@ -32,10 +35,12 @@ export const actions = {
       
       if(res.data.success) {
         commit('setAuth', {
-          success: res.data.success,
-          name: res.data.name
+          login: true,
+          name: res.data.name,
+          id: res.data._id
         });
-        Cookie.set('auth', res.data.token, { expires: 7 })
+        this.$router.push('/')
+        Cookie.set('x_auth', res.data.token)
       }else {
         commit('setLoginProcessStatus', {
           success: res.data.success,
@@ -46,4 +51,45 @@ export const actions = {
       console.error(err);
     }
   },
+
+  async logout({ commit }, payload) {
+    try {
+      const res = await this.$axios.get('/api/users/logout', {
+        withCredentials: true
+      })
+      if(res.data.success){
+        Cookie.remove('x_auth')
+        commit('setAuth', {
+          login: false,
+          name: "",
+          id: ""
+        });
+      }else {
+        console.log(res.data)
+        alert("logout fail")
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  async auth({ commit }, payload) {
+    try {
+      const res = await this.$axios.get('/api/users/auth',{
+        withCredentials: true
+      });
+      if(res.data.isAuth){
+        commit('setAuth', {
+          login: true,
+          name: res.data.name,
+          id: res.data._id
+        });
+      }else {
+        Cookie.remove('x_auth')
+      }
+      
+    } catch (err) {
+      console.error(err);
+    }
+  }
 };

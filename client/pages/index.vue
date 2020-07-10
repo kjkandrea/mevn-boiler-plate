@@ -5,7 +5,14 @@
       align="center"
     >
       <v-col class="shrink">
-        <v-tooltip right>
+        <profile-card
+          v-if="profile.login"
+          :profile="profile"
+        />
+        <v-tooltip 
+          v-else
+          right
+        >
           <template v-slot:activator="{ on }">
             <v-btn
               icon
@@ -25,9 +32,16 @@
 
 <script>
 
+import ProfileCard from '~/components/ProfileCard'
+
 export default {
   components: {
-
-  }
+    ProfileCard
+  },
+  computed: {
+    profile() {
+      return this.$store.state.users.auth
+    }
+  },
 }
 </script>

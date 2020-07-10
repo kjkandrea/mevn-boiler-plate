@@ -5,19 +5,27 @@
       align="center"
     >
       <v-col class="shrink">
-        <login-form />
+        <profile-card
+          :profile="profile"
+        />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import LoginForm from "~/components/LoginForm"
+
+import ProfileCard from '~/components/ProfileCard'
 
 export default {
   components: {
-    LoginForm
+    ProfileCard
   },
-  middleware: 'anonymous',
+  computed: {
+    profile() {
+      return this.$store.state.users.auth
+    }
+  },
+  middleware: 'authenticated'
 }
 </script>

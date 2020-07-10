@@ -18,6 +18,7 @@
     <v-btn
       text
       class="white--text"
+      @click="onClickLogout"
     >
       로그아웃
     </v-btn>
@@ -29,6 +30,11 @@ export default {
   name: "Navbar",
   data: () => ({
   }),
+  methods: {
+    onClickLogout(){
+      this.$store.dispatch('users/logout');
+    }
+  }
 }
 </script>
 
