@@ -94,13 +94,17 @@ export default {
   },
   computed: {
     process() {
-      return this.$store.state.users.loginProcess
+      return this.$store.state.users.registerProcess
     }
   },
   methods: {
     onSubmitForm() {
       if (this.$refs.form.validate()) {
-        console.log('회원가입 시도')
+        this.$store.dispatch('users/register', {
+          email: this.email,
+          password: this.password,
+          name: this.nickname
+        });
       }
     }
   },
