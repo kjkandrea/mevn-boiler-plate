@@ -25,9 +25,10 @@ yarn-error.log*
 # backup
 
 *.bak
+*.bak.js
 
 # etc
 
 /data
 password.js
-/config/dev.js
+*/config/dev.js
