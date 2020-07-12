@@ -2,11 +2,11 @@
 
 MongoDB, Express, Vuejs, Nodejs로 구성된 보일러 플레이트
 
+![john](https://user-images.githubusercontent.com/32591477/87237473-a8a44180-c431-11ea-9b23-a1eb7f3f9644.png)
+
 ## 기능명세
 
 ### server
-
-![john](https://user-images.githubusercontent.com/32591477/87237473-a8a44180-c431-11ea-9b23-a1eb7f3f9644.png)
 
 * MongoDB user 스키마 생성
 * 회원가입 api 구현
