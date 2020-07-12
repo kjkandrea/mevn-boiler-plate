@@ -5,7 +5,6 @@ export const state = () => ({
     login: null,
     name: "",
     userId: "",
-    avatar: ""
   },
   loginProcess: {
     success: null,
@@ -22,7 +21,6 @@ export const mutations = {
     state.auth.login = payload.login;
     state.auth.name = payload.name;
     state.authuserId = payload.id
-    state.avatar = payload.avatar
   },
 
   setLoginProcessStatus(state, payload) {
@@ -55,8 +53,7 @@ export const actions = {
         commit('setAuth', {
           login: true,
           name: res.data.name,
-          id: res.data._id,
-          avatar: res.avatar
+          id: res.data._id
         });
         commit('processReset')
         this.$router.push('/')
@@ -105,8 +102,7 @@ export const actions = {
         commit('setAuth', {
           login: false,
           name: "",
-          id: "",
-          avatar: ""
+          id: ""
         });
         this.$router.push('/login')
       }else {
@@ -126,8 +122,7 @@ export const actions = {
         commit('setAuth', {
           login: true,
           name: res.data.name,
-          id: res.data._id,
-          avatar: res.data.avatar
+          id: res.data._id
         });
       }else {
         Cookie.remove('x_auth')
