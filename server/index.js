@@ -90,8 +90,7 @@ app.post('/api/users/login', (req, res) => {
           success: true,
           userId: user._id,
           token: user.token,
-          name: user.name,
-          avatar: user.avatar
+          name: user.name
         })
       })
     })
@@ -106,7 +105,6 @@ app.get('/api/users/auth', auth, (req, res) => {
     isAuth: true,
     email: req.user.email,
     name: req.user.name,
-    avatar: req.user.avatar,
     role: req.user.role,
     image: req.user.image
   })
